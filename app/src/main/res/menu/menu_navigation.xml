@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/item_chat"
+        android:icon="@drawable/icon_navigation_chat"
+        android:title="@string/navigation_chat"/>
+
+    <item android:id="@+id/item_discover"
+        android:icon="@drawable/icon_navigation_discover"
+        android:title="@string/navigation_discover"/>
+
+    <item android:id="@+id/item_quick"
+        android:icon="@drawable/icon_navigation_quick"
+        android:title="@string/navigation_quick"/>
+
+    <item android:id="@+id/item_mine"
+        android:icon="@drawable/icon_navigation_mine"
+        android:title="@string/navigation_mine"/>
+
+</menu>

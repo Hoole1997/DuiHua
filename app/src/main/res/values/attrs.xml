@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AutoLinkTextView">
+        <!-- 链接高亮颜色 -->
+        <attr name="highlight_textcolor" format="color" />
+        <!-- 默认文字颜色 -->
+        <attr name="default_textcolor" format="color" />
+    </declare-styleable>
+</resources>

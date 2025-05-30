@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="18dp"
+        android:layout_marginRight="120dp">
+
+        <TextView
+            android:id="@+id/tv_media_source"
+            android:background="@drawable/bg_media_source"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/white"
+            tools:text="原创"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivHead"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                app:riv_border_width="1dp"
+                app:riv_border_color="@color/white"
+                app:riv_corner_radius="10dp"
+                tools:src="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop"/>
+
+            <TextView
+                android:id="@+id/tvNickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123123123"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/white"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/autoLinkTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="只有 #允儿 的脸我才敢拉这么近"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            app:highlight_textcolor="#FFDDA4"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/tvLikecount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="22.5w"
+            android:textSize="14sp"
+            android:text="0"
+            android:gravity="center_horizontal"
+            android:drawableTop="@mipmap/ic_video_like"
+            android:drawablePadding="2dp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvCommentcount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="3823"
+            android:layout_marginTop="20dp"
+            android:drawableTop="@mipmap/ic_video_comment"
+            android:gravity="center_horizontal"
+            android:drawablePadding="2dp"
+            android:textSize="14sp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
