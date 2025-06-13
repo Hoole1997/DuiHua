@@ -23,9 +23,10 @@ class WalletActivity : BaseActivity<ActivityWalletBinding, WalletModel>() {
                 ActivityUtils.startActivity(BindAliPayActivity::class.java)
             }
         }
-        binding.tvMediaIncome.setOnClickListener {
+        binding.itemMediaIncome.setOnClickListener {
             ActivityUtils.startActivity(InComeActivity::class.java)
         }
+        binding
     }
 
     override fun initViewModel(): WalletModel? {

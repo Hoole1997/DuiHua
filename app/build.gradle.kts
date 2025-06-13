@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
+    id("androidx.room")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -42,6 +44,9 @@ android {
             )
             signingConfig = signingConfigs.getByName("release")
         }
+    }
+    room {
+        schemaDirectory("$projectDir/schemas")
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -105,11 +110,11 @@ dependencies {
     implementation("com.geyifeng.immersionbar:immersionbar-ktx:3.2.2")
     implementation("io.github.cymchad:BaseRecyclerViewAdapterHelper4:4.1.4")
 
-    implementation("com.google.android.exoplayer:exoplayer:2.17.0")
+    implementation("com.google.android.exoplayer:exoplayer:2.19.1")
     implementation("com.google.android.exoplayer:exoplayer-core:2.17.0")
     implementation("com.google.android.exoplayer:exoplayer-dash:2.17.0")
     implementation("com.google.android.exoplayer:exoplayer-hls:2.17.0")
-    implementation("com.google.android.exoplayer:exoplayer-ui:2.17.0")
+    implementation("com.google.android.exoplayer:exoplayer-ui:2.19.1")
     implementation("com.google.android.exoplayer:extension-rtmp:2.17.0")
     implementation("io.reactivex:rxjava:1.1.0")
 
@@ -117,4 +122,12 @@ dependencies {
 
     implementation("io.github.lucksiege:pictureselector:v3.11.2")
     implementation("com.aliyun.dpa:oss-android-sdk:2.9.21")
+    implementation(project(":chatinput"))
+    implementation(project(":messagelist"))
+    val room_version = "2.7.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("com.github.liangjingkanji:soft-input-event:1.0.9")
 }

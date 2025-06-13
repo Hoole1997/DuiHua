@@ -1,5 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.duihua.chat.ui.mine
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.EditText
@@ -21,6 +24,7 @@ import com.duihua.chat.databinding.FragmentMineBinding
 import com.duihua.chat.databinding.LayoutEmpty1Binding
 import com.duihua.chat.net.UserManager
 import com.duihua.chat.ui.auth.ServiceActivity
+import com.duihua.chat.ui.chat.ChatActivity
 import com.duihua.chat.ui.media.CreateMediaActivity
 import com.duihua.chat.ui.setting.SettingActivity
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -50,6 +54,7 @@ class FragmentMine : BaseFragment<FragmentMineBinding, MineModel>() {
         return FragmentMineBinding.inflate(layoutInflater)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun initView() {
         model?.isOther = arguments?.getBoolean(MINE_PARAM_OTHER) ?: false
         model?.otherUserId = arguments?.getString(MINE_PARAM_USERID) ?: ""
@@ -74,7 +79,13 @@ class FragmentMine : BaseFragment<FragmentMineBinding, MineModel>() {
             binding.llOther.isVisible = true
             binding.tvWork.setCompoundDrawablesRelative(null, null, null, null)
             binding.btnAttention.setOnClickListener {
-                showAttentionDialog()
+                model?.otherUserInfoEvent?.value?.let {
+                    if (it.isFollow) {
+                        ChatActivity.launch(requireActivity(),it.id)
+                    } else {
+                        showAttentionDialog()
+                    }
+                }
             }
             binding.btnHasAttention.setOnClickListener {
                 showCancelAttentionDialog()

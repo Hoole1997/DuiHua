@@ -18,12 +18,15 @@ class CreateMediaActivity : BaseActivity<ActivityCreateMediaBinding, MediaModel>
         }
     }
 
+    private var isImage = false
+
     override fun initBinding(): ActivityCreateMediaBinding {
         return ActivityCreateMediaBinding.inflate(layoutInflater)
     }
 
     override fun initView() {
         useDefaultToolbar(binding.toolbar,"发布作品")
+        isImage = intent.getBooleanExtra("isImage",false)
 
         binding.spinnerSource.setupWithStringList(arrayListOf("自行拍摄","网络取材")) {position: Int, item: String ->
 

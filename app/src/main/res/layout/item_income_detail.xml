@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:layout_marginTop="7.5dp"
+        android:layout_marginBottom="7.5dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/shape_white_8dp">
+
+        <ImageView
+            android:id="@+id/iv_type"
+            android:src="@mipmap/ic_come_detail_withdraw"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_type"
+            android:text="提现(提交)"
+            app:layout_constraintStart_toEndOf="@id/iv_type"
+            app:layout_constraintTop_toTopOf="@id/iv_type"
+            app:layout_constraintBottom_toBottomOf="@id/iv_type"
+            android:layout_marginStart="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:textColor="#db4040"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:text="￥0.0"
+            app:layout_constraintTop_toTopOf="@id/iv_type"
+            app:layout_constraintBottom_toBottomOf="@id/iv_type"
+            app:layout_constraintEnd_toStartOf="@id/tv_time"
+            app:layout_constraintStart_toEndOf="@id/tv_type"
+            android:gravity="end|center_vertical"
+            android:layout_marginEnd="15dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:text="2025/6/5 02:29"
+            android:textSize="13sp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintTop_toTopOf="@id/iv_type"
+            app:layout_constraintBottom_toBottomOf="@id/iv_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

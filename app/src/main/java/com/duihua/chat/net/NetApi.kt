@@ -9,6 +9,8 @@ class NetApi {
         const val API_OSS_TOKEN = "http://139.224.213.222:24918/get_sts_token"
 
         const val API_HOST = "http://www.duihua.click:23520"
+        //im登录地址
+        const val API_IM_URL = "/session/im-url"
         //获取自己信息
         const val API_USER_BASIC = "/user/basic"
         //修改自己的资料
@@ -43,6 +45,14 @@ class NetApi {
         const val API_DISCOVER_DETAIL_LIST = "/media/explore/list"
         //实名认证
         const val API_IDENTITY = "/user/upload-identity"
+        //收支明细
+        const val API_WITHDRAW_LIST = "/user/withdraw-list"
+        //提现
+        const val API_DO_WITHDRAW = "/user/do-withdraw"
+        //可充值列表
+        const val API_RECHARGE_ITEM = "/recharge/items"
+        //钻石流水明细
+        const val API_DIAMOND_DETAIL_LIST = "/user/get-diamond-detail-list"
     }
 
 }

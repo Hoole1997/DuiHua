@@ -29,3 +29,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "DuiHua"
 include(":app")
+include(":chatinput")
+include("messagelist")

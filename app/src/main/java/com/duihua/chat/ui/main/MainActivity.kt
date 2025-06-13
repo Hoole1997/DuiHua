@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.duihua.chat.ui.main
 
 import androidx.activity.viewModels
@@ -9,11 +11,14 @@ import com.blankj.utilcode.util.BarUtils
 import com.duihua.chat.R
 import com.duihua.chat.base.BaseActivity
 import com.duihua.chat.databinding.ActivityMainBinding
+import com.duihua.chat.net.UserManager
+import com.duihua.chat.ui.chat.ChatManager
 import com.duihua.chat.ui.discover.DiscoverFragment
 import com.duihua.chat.ui.message.MessageFragment
 import com.duihua.chat.ui.mine.FragmentMine
 import com.duihua.chat.ui.quick.QuickFragment
 
+@Suppress("DEPRECATION")
 class MainActivity : BaseActivity<ActivityMainBinding, MainModel>() {
 
     companion object {
@@ -35,7 +40,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainModel>() {
     }
 
     override fun initObserve() {
-
+        if (UserManager.userInfo() != null) {
+            ChatManager.loginIM()
+        }
     }
 
     private fun initNavigation() {

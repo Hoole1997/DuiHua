@@ -12,6 +12,7 @@
         android:layout_height="?attr/actionBarSize"/>
 
     <LinearLayout
+        android:id="@+id/ll_withdraw"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:orientation="vertical"

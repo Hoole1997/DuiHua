@@ -48,7 +48,7 @@ class ServiceActivity : BaseActivity<ActivityServiceBinding, AuthModel>() {
         binding.tvDiamonds.text = userInfo.diamond.toString()
 
         binding.tvAuthState.text = if (userInfo.identityNumber == null) "未认证" else "已认证"
-        binding.tvBeauty.text = if (userInfo.beautyData == null) "未开通" else userInfo.beautyData
+        binding.tvBeauty.text = userInfo.beautyData ?: "未开通"
 
         if (userInfo.identityNumber != null) {
             binding.itemRealName.isEnabled = false
