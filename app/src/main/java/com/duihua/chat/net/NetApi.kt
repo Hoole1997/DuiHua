@@ -53,6 +53,8 @@ class NetApi {
         const val API_RECHARGE_ITEM = "/recharge/items"
         //钻石流水明细
         const val API_DIAMOND_DETAIL_LIST = "/user/get-diamond-detail-list"
+        //更改手机号
+        const val API_CHANGE_PHONE = "/user/basic/edit_phone"
     }
 
 }

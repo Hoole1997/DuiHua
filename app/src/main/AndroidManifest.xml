@@ -100,6 +100,15 @@
         <activity
             android:name=".ui.wallet.RechargeDetailActivity"
             android:launchMode="singleTop" />
+        <activity
+            android:name=".ui.mine.UserManagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mine.UserLogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mine.ChangePhoneActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

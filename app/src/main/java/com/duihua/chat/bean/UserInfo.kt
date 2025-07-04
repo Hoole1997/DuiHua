@@ -2,7 +2,7 @@ package com.duihua.chat.bean
 
 data class UserInfo(
     val id: Long,
-    val phone: String,
+    var phone: String,
     val currency: Int,
     val introduction: String?,
     val diamond: Long,
@@ -14,9 +14,9 @@ data class UserInfo(
     val identityBackImageURL: String?,
     val nickName: String?,
     val sex: String,  // 可以考虑使用枚举类
-    val canSearchByPhone: Boolean,
-    val canSeeFansList: String,  // 可以考虑使用枚举类
-    val canSeeFansNumber: String,  // 可以考虑使用枚举类
+    var canSearchByPhone: Boolean = false,
+    var canSeeFansList: String = "PRIVATE",  // 可以考虑使用枚举类
+    var canSeeFansNumber: String = "PRIVATE",  // 可以考虑使用枚举类
     val vipLevel: Int,
     val createDate: String,  // 可以考虑使用 Date 或 LocalDateTime
     val lastModifiedDate: String,  // 可以考虑使用 Date 或 LocalDateTime
