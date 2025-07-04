@@ -61,6 +61,10 @@ class NetApi {
         const val API_FAVORITES_MEDIA = "/favorites/do-favorite"
         //获取收藏列表
         const val API_FAVORITES_LIST = "/favorites/favorite-list"
+        //评论列表
+        const val API_COMMENT_LIST = "/media/comment-list"
+        //评论
+        const val API_COMMENT_MEDIA = "/media/comment"
     }
 
 }

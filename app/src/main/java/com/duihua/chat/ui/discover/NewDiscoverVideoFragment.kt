@@ -614,7 +614,8 @@ class NewDiscoverVideoFragment : BaseFragment<FragmentNewDiscoverVideoBinding, D
                 }
                 
                 binding.llComment.setOnClickListener {
-                    // 可以添加打开评论的逻辑
+                    // 显示评论底部表单
+                    showCommentDialog(item.id)
                 }
                 
                 binding.llReward.setOnClickListener {
@@ -686,5 +687,17 @@ class NewDiscoverVideoFragment : BaseFragment<FragmentNewDiscoverVideoBinding, D
                 }
             }
         }
+    }
+    
+    /**
+     * 显示评论底部表单
+     */
+    private fun showCommentDialog(mediaId: Long) {
+        // 暂停视频播放
+        videoPlayer.pause()
+        
+        // 创建并显示评论底部表单
+        val commentDialog = CommentBottomSheetFragment.newInstance(mediaId)
+        commentDialog.show(childFragmentManager, "CommentBottomSheet")
     }
 } 
