@@ -7,27 +7,28 @@ import com.bumptech.glide.Glide
 import com.chad.library.adapter4.BaseDifferAdapter
 import com.chad.library.adapter4.viewholder.QuickViewHolder
 import com.duihua.chat.R
+import com.duihua.chat.bean.ExploreContent
 import com.duihua.chat.bean.SearchAccount
 import com.duihua.chat.bean.UserMedia
 
-class UserMediaAdapter : BaseDifferAdapter<UserMedia, QuickViewHolder>(object : DiffUtil.ItemCallback<UserMedia>() {
+class UserMediaAdapter : BaseDifferAdapter<ExploreContent, QuickViewHolder>(object : DiffUtil.ItemCallback<ExploreContent>() {
     override fun areItemsTheSame(
-        oldItem: UserMedia,
-        newItem: UserMedia
+        oldItem: ExploreContent,
+        newItem: ExploreContent
     ): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(
-        oldItem: UserMedia,
-        newItem: UserMedia
+        oldItem: ExploreContent,
+        newItem: ExploreContent
     ): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun getChangePayload(
-        oldItem: UserMedia,
-        newItem: UserMedia
+        oldItem: ExploreContent,
+        newItem: ExploreContent
     ): Any? {
         return super.getChangePayload(oldItem, newItem)
     }
@@ -35,7 +36,7 @@ class UserMediaAdapter : BaseDifferAdapter<UserMedia, QuickViewHolder>(object : 
     override fun onBindViewHolder(
         holder: QuickViewHolder,
         position: Int,
-        item: UserMedia?
+        item: ExploreContent?
     ) {
         item?.let {
             Glide.with(context)

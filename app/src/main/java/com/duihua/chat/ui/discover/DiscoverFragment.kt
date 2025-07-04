@@ -1,10 +1,12 @@
 package com.duihua.chat.ui.discover
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import com.duihua.chat.R
 import com.duihua.chat.base.BaseFragment
 import com.duihua.chat.databinding.FragmentDiscoverBinding
 import com.gyf.immersionbar.ImmersionBar
@@ -33,7 +35,7 @@ class DiscoverFragment : BaseFragment<FragmentDiscoverBinding, DiscoverModel>() 
         titleList.forEach { title ->
             binding.tabTitle.apply {
                 addTab(newTab().setText(title))
-                fragmentList.add(DiscoverVideoFragment.newInstance(title))
+                fragmentList.add(NewDiscoverVideoFragment.newInstance(title))
             }
         }
         binding.vpPage.adapter = object : FragmentStatePagerAdapter(

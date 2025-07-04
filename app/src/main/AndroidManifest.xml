@@ -109,6 +109,11 @@
         <activity
             android:name=".ui.mine.ChangePhoneActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.media.MediaListActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.DuiHua.NoActionBar" />
     </application>
 
 </manifest>

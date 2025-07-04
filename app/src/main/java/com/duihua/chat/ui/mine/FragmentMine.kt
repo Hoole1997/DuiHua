@@ -5,6 +5,7 @@ package com.duihua.chat.ui.mine
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isGone
@@ -14,10 +15,15 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.blankj.utilcode.util.ActivityUtils
 import com.bumptech.glide.Glide
+import com.chad.library.adapter4.BaseQuickAdapter
+import com.chad.library.adapter4.BaseQuickAdapter.OnItemClickListener
 import com.duihua.chat.R
+import com.duihua.chat.base.BaseAdapter
 import com.duihua.chat.base.BaseFragment
+import com.duihua.chat.bean.ExploreContent
 import com.duihua.chat.bean.OtherUserInfo
 import com.duihua.chat.bean.UserInfo
+import com.duihua.chat.bean.UserMedia
 import com.duihua.chat.databinding.DialogPersonalAttentionBinding
 import com.duihua.chat.databinding.DialogPersonalSettingBinding
 import com.duihua.chat.databinding.FragmentMineBinding
@@ -99,6 +105,10 @@ class FragmentMine : BaseFragment<FragmentMineBinding, MineModel>() {
             binding.itemProfileEdit.setOnClickListener {
                 ActivityUtils.startActivity(UserInfoActivity::class.java)
             }
+            binding.itemProfileCollect.setOnClickListener {
+                // 打开收藏列表
+                com.duihua.chat.ui.media.MediaListActivity.launchFavorites(requireActivity())
+            }
             binding.tvWork.setOnClickListener {
                 XPopup.Builder(requireActivity())
                     .asCenterList("发布作品",arrayOf("图片","短视频")) { position,text ->
@@ -125,6 +135,36 @@ class FragmentMine : BaseFragment<FragmentMineBinding, MineModel>() {
 
     private fun initRvMedia() {
         mediaAdapter = UserMediaAdapter()
+        mediaAdapter.setOnItemClickListener(object : BaseQuickAdapter.OnItemClickListener<ExploreContent> {
+            override fun onClick(
+                adapter: BaseQuickAdapter<ExploreContent, *>,
+                view: View,
+                position: Int
+            ) {
+                // 获取当前所有媒体列表
+                val mediaList = ArrayList<ExploreContent>()
+                mediaAdapter.items.forEach { item ->
+                    mediaList.add(item)
+                }
+                
+                // 打开MediaListActivity
+                if (mediaList.isNotEmpty()) {
+                    val nickname = if (model?.isOther == true) {
+                        model?.otherUserInfoEvent?.value?.nickName ?: ""
+                    } else {
+                        UserManager.userInfo()?.nickName ?: ""
+                    }
+                    
+                    val title = "$nickname 的作品"
+                    com.duihua.chat.ui.media.MediaListActivity.launch(
+                        requireActivity(),
+                        mediaList,
+                        position,
+                        title
+                    )
+                }
+            }
+        })
         mediaAdapter.isStateViewEnable = true
         mediaAdapter.stateView = LayoutEmpty1Binding.inflate(layoutInflater).root
         binding.rvWork.adapter = mediaAdapter

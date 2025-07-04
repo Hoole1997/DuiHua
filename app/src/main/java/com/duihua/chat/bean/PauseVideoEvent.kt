@@ -1,8 +1,6 @@
 package com.duihua.chat.bean
 
 /**
- * create by libo
- * create on 2020-05-21
- * description
+ * 视频播放控制事件
  */
 class PauseVideoEvent(val isPlayOrPause: Boolean)

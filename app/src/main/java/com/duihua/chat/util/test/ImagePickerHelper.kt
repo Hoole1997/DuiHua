@@ -19,12 +19,19 @@ import java.util.Locale
 class ImagePickerHelper(private val activity: ComponentActivity) {
     // 图片选择回调
     private var imageCallback: ((Uri?) -> Unit)? = null
+    // 视频选择回调
+    private var videoCallback: ((Uri?) -> Unit)? = null
     // 临时保存拍照图片的 Uri
     private lateinit var tempPhotoUri: Uri
 
     // 注册图片选择器
     private val pickImage = activity.registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
         imageCallback?.invoke(uri)
+    }
+    
+    // 注册视频选择器
+    private val pickVideo = activity.registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        videoCallback?.invoke(uri)
     }
 
     // 注册拍照
@@ -42,6 +49,15 @@ class ImagePickerHelper(private val activity: ComponentActivity) {
             launchPhotoPicker()
         } else {
             imageCallback?.invoke(null)
+        }
+    }
+    
+    // 注册视频存储权限请求
+    private val requestVideoStoragePermission = activity.registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+        if (isGranted) {
+            launchVideoPicker()
+        } else {
+            videoCallback?.invoke(null)
         }
     }
 
@@ -76,6 +92,28 @@ class ImagePickerHelper(private val activity: ComponentActivity) {
             }
         }
     }
+    
+    /**
+     * 选择视频（从相册）
+     */
+    fun pickVideo(callback: (Uri?) -> Unit) {
+        videoCallback = callback
+
+        when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> {
+                launchVideoPicker()
+            }
+            ContextCompat.checkSelfPermission(
+                activity,
+                Manifest.permission.READ_EXTERNAL_STORAGE
+            ) == PackageManager.PERMISSION_GRANTED -> {
+                launchVideoPicker()
+            }
+            else -> {
+                requestVideoStoragePermission.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+        }
+    }
 
     /**
      * 拍照
@@ -98,6 +136,10 @@ class ImagePickerHelper(private val activity: ComponentActivity) {
 
     private fun launchPhotoPicker() {
         pickImage.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+    
+    private fun launchVideoPicker() {
+        pickVideo.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.VideoOnly))
     }
 
     private fun launchCamera() {

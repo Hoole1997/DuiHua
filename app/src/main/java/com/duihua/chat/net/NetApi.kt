@@ -55,6 +55,12 @@ class NetApi {
         const val API_DIAMOND_DETAIL_LIST = "/user/get-diamond-detail-list"
         //更改手机号
         const val API_CHANGE_PHONE = "/user/basic/edit_phone"
+        //上传内容
+        const val API_MEDIA_UPLOAD = "/media/single"
+        //收藏内容
+        const val API_FAVORITES_MEDIA = "/favorites/do-favorite"
+        //获取收藏列表
+        const val API_FAVORITES_LIST = "/favorites/favorite-list"
     }
 
 }

@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-kapt")
+    id("kotlin-parcelize")
     id("androidx.room")
     id("com.google.devtools.ksp")
 }
@@ -130,4 +131,5 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     ksp("androidx.room:room-compiler:$room_version")
     implementation("com.github.liangjingkanji:soft-input-event:1.0.9")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 }

@@ -22,6 +22,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.blankj.utilcode.util.Utils
 import com.drake.net.Get
 import com.drake.net.Post
+import com.duihua.chat.bean.ExploreContent
+import com.duihua.chat.bean.ExploreListResult
 import com.duihua.chat.bean.MediaListResult
 import com.duihua.chat.bean.OSSToken
 import com.duihua.chat.bean.OtherUserInfo
@@ -37,7 +39,7 @@ class MineModel : ViewModel() {
     val userInfoEvent = MutableLiveData<UserInfo>()
 
     val requestCancelEvent = MutableLiveData<Pair<Boolean, Boolean>>()
-    val mediaListEvent = MutableLiveData<ArrayList<UserMedia>>()
+    val mediaListEvent = MutableLiveData<ArrayList<ExploreContent>>()
 
     var isOther = false
     var page = 0
@@ -98,7 +100,7 @@ class MineModel : ViewModel() {
             page++
         }
         scopeNetLife {
-            Get<MediaListResult>(if (isOther) NetApi.API_OTHER_USER_MEDIA_LIST else NetApi.API_USER_MEDIA_LIST) {
+            Get<ExploreListResult>(if (isOther) NetApi.API_OTHER_USER_MEDIA_LIST else NetApi.API_USER_MEDIA_LIST) {
                 if (isOther) {
                     param("ownerID", otherUserId)
                 }
